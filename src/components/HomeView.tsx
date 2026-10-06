@@ -132,8 +132,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
           {/* Wide Hero Architectural Visual Card (Estilo EquityFlow con franja inferior) */}
           <div className="mt-10 sm:mt-12 relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#16181B]/10 bg-[#16181B] group">
             <img
-              src="/casa_mediterranea_pinos_lavanda.png"
-              alt="Casa mediterránea entre pinos y lavanda · Vivienda Passivhaus industrializada de madera técnica"
+              src="/Frontal HeroCasa Mediterranea.png"
+              alt="Frontal Casa Mediterránea · Vivienda Passivhaus industrializada de madera técnica"
               className="w-full h-[380px] sm:h-[480px] lg:h-[580px] object-cover object-center group-hover:scale-102 transition-transform duration-700"
               loading="eager"
             />
