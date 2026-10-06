@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  /* Medgón Passivhaus Official Palette */
+  --mg-bg-white: #FFFFFF;
+  --mg-bg-mineral: #FAF8F5;
+  --mg-text-main: #16181B;
+  --mg-text-muted: #5A606A;
+  --mg-text-light: #8E95A2;
+  
+  /* Sustainability and contrast accents */
+  --mg-green-primary: #0DA836;
+  --mg-green-lime: #78E639;
+  --mg-terracotta: #F35843;
+  
+  /* Wood and biophilic warmth */
+  --mg-wood-light: #F5E7D3;
+  --mg-wood-sand: #E4C59E;
+  --mg-wood-dark: #8C6A48;
+  
+  /* Borders and elevations */
+  --mg-border-hairline: rgba(22, 24, 27, 0.08);
+  --mg-border-strong: rgba(22, 24, 27, 0.16);
+
+  /* Typography */
+  --font-sans: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--mg-text-main);
+  background-color: var(--mg-bg-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 100vw container breakout helper for WordPress canvas */
+.mg-full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+

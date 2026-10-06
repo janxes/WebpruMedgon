@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "advisor_queries": {
+      "title": "Consultas al Asesor Técnico",
+      "description": "Registro de preguntas y respuestas técnicas, costes y parámetros de vivienda",
+      "type": "object",
+      "properties": {
+        "userQuestion": {
+          "type": "string",
+          "description": "Pregunta formulada por el usuario"
+        },
+        "advisorResponse": {
+          "type": "string",
+          "description": "Respuesta proporcionada por el asesor"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Fecha y hora ISO"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Timestamp epoch en ms"
+        },
+        "houseConfig": {
+          "type": "object",
+          "description": "Parámetros del proyecto al preguntar"
+        },
+        "sessionId": {
+          "type": "string",
+          "description": "ID de sesión del cliente"
+        }
+      },
+      "required": ["userQuestion", "advisorResponse", "createdAt", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/advisor_queries/{queryId}": {
+      "schema": "advisor_queries",
+      "description": "Colección principal de preguntas y respuestas del Asesor Medgón"
+    }
+  }
+}

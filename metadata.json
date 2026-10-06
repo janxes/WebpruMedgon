@@ -1,0 +1,8 @@
+{
+  "name": "Web Medgon SEO",
+  "description": "Web oficial de la empresa especializada en viviendas para autopromotores de catalogo con metodología industrializada con estructuras de madera Passivhaus.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
