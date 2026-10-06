@@ -1,6 +1,6 @@
 {
-  "name": "Web Medgon SEO",
-  "description": "Web oficial de la empresa especializada en viviendas para autopromotores de catalogo con metodología industrializada con estructuras de madera Passivhaus.",
+  "name": "Medgón Passivhaus",
+  "description": "Construcción industrializada en madera técnica para particulares: casas de consumo casi nulo, derecho de vuelo en azoteas, fachadas y cubiertas a medida.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

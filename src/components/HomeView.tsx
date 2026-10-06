@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CATALOG_MODELS } from '../data/modelsCatalog';
+import { SpecializedSolutionsSection } from './SpecializedSolutionsSection';
 import { 
   ArrowRight, 
   Check, 
@@ -16,7 +17,10 @@ import {
   Clock, 
   Layers, 
   Building2,
-  Mouse 
+  Mouse,
+  Ruler,
+  Maximize2,
+  Sparkles 
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -764,8 +768,16 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
         </div>
       </section>
 
+      {/* 9.5 SOLUCIONES ESPECIALIZADAS PARA PARTICULARES (B2C & AI SEO) */}
+      <SpecializedSolutionsSection 
+        onNavigate={onNavigate}
+        onSelectSolutionForContact={(solutionName) => {
+          setFormData(prev => ({ ...prev, modeloInteres: solutionName }));
+        }}
+      />
+
       {/* 10. OFICINA TÉCNICA MEDGÓN (Formulario oficial) */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="solicitar-informacion" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           <div className="lg:col-span-5 space-y-6">
@@ -884,6 +896,9 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
                       className="w-full px-3.5 py-2.5 text-sm border border-[#16181B]/20 rounded bg-white focus:outline-none focus:border-[#16181B]"
                     >
                       <option value="Aún no lo sé / Deseo orientación">Aún no lo sé / Deseo orientación</option>
+                      <option value="Derecho de vuelo en madera (Ampliación sobre azotea)">Derecho de vuelo en madera (Ampliación sobre azotea)</option>
+                      <option value="Fachadas industrializadas (Envolventes Passivhaus)">Fachadas industrializadas (Envolventes Passivhaus)</option>
+                      <option value="Cubiertas de madera de alta precisión (Leica 3D)">Cubiertas de madera de alta precisión (Leica 3D)</option>
                       <option value="MG 50">Modelo MG 50 (50 m²)</option>
                       <option value="MG 87">Modelo MG 87 (87 m²)</option>
                       <option value="MG 100">Modelo MG 100 (100 m²)</option>
