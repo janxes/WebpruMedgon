@@ -33,13 +33,13 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
           <button
             type="button"
             onClick={() => onNavigate('home')}
-            className="flex items-center text-left cursor-pointer border-none bg-transparent p-0 group"
+            className="flex items-center text-left cursor-pointer border-none bg-transparent p-0 group shrink-0"
             aria-label="Medgón Passivhaus Inicio"
           >
             <img
               src="/logo-medgon.png"
               alt="Medgón Passivhaus"
-              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
+              className="h-8 xs:h-9 sm:h-12 max-w-[140px] sm:max-w-none w-auto object-contain transition-transform group-hover:scale-105 duration-200"
               loading="eager"
             />
           </button>
@@ -178,25 +178,26 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             </button>
           </nav>
 
-          {/* Zone 3: Primary Action - Hablemos de tu proyecto */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* Zone 3: Primary Action - Hablemos de tu proyecto (compacto en móvil) */}
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               type="button"
               onClick={() => onNavigate('contact')}
-              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded transition-colors cursor-pointer shadow-xs active:scale-95 whitespace-nowrap"
+              className="inline-flex items-center gap-1 px-2.5 sm:px-5 py-1.5 sm:py-2.5 text-[11px] sm:text-sm font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded transition-colors cursor-pointer shadow-xs active:scale-95 whitespace-nowrap shrink-0"
             >
-              <span>Hablemos de tu proyecto</span>
-              <ArrowUpRight className="w-4 h-4 hidden sm:inline" />
+              <span className="hidden sm:inline">Hablemos de tu proyecto</span>
+              <span className="sm:hidden">Hablemos</span>
+              <ArrowUpRight className="w-3.5 h-3.5 hidden sm:inline" />
             </button>
 
             {/* Mobile Hamburger Toggle */}
             <button
               type="button"
               onClick={() => setIsMobileDrawerOpen(true)}
-              className="xl:hidden p-2 text-[#16181B] hover:bg-[#FAF8F5] rounded transition-colors cursor-pointer"
+              className="xl:hidden p-1.5 sm:p-2 text-[#16181B] hover:bg-[#FAF8F5] rounded transition-colors cursor-pointer shrink-0"
               aria-label="Abrir menú móvil"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>

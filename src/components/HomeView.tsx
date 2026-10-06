@@ -15,7 +15,8 @@ import {
   TreePine, 
   Clock, 
   Layers, 
-  Building2 
+  Building2,
+  Mouse 
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -83,189 +84,126 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
   return (
     <div className="space-y-20 sm:space-y-28 pb-16">
       
-      {/* 1. HERO SECTION (Estilo claro, biofílico y equilibrado inspirado en la estética global) */}
-      <section className="relative pt-4 sm:pt-8">
+      {/* 1. HERO SECTION (Estilo minimalista arquitectónico centrado inspirado en EquityFlow) */}
+      <section className="relative pt-6 sm:pt-10">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Top Centered Header Block */}
+          <div className="max-w-4xl mx-auto text-center space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0DA836]/10 border border-[#0DA836]/20 text-xs font-bold uppercase tracking-wider text-[#0DA836] shadow-2xs">
+              <TreePine className="w-3.5 h-3.5" />
+              <span>CATÁLOGO RESIDENCIAL INDUSTRIALIZADO</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#16181B] leading-[1.08] text-balance">
+              Tu casa de consumo casi nulo.<br />
+              <span className="text-[#16181B]">Clara desde el inicio.</span>
+            </h1>
+
+            <p className="text-base sm:text-lg lg:text-xl text-[#5A606A] leading-relaxed max-w-2xl mx-auto font-normal">
+              Viviendas de alta eficiencia, saludables que te devuelven la inversión realizada. Elige un modelo Medgón, adáptalo a tu forma de vivir y construye con más control sobre el proceso, el confort y el futuro.
+            </p>
+
+            {/* Centered Action Buttons Row */}
+            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
+              <button
+                type="button"
+                onClick={() => onNavigate('catalog')}
+                className="px-7 py-3.5 text-sm sm:text-base font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded-full transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95 flex items-center gap-2"
+              >
+                <span>Ver modelos</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onNavigate('contact')}
+                className="px-7 py-3.5 text-sm sm:text-base font-bold text-[#16181B] bg-white hover:bg-[#FAF8F5] border border-[#16181B]/20 hover:border-[#16181B] rounded-full transition-all cursor-pointer shadow-xs active:scale-95"
+              >
+                Tengo una parcela
+              </button>
+            </div>
+          </div>
+
+          {/* Wide Hero Architectural Visual Card (Estilo EquityFlow con franja inferior) */}
+          <div className="mt-10 sm:mt-12 relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#16181B]/10 bg-[#16181B] group">
+            <img
+              src="/casa_mediterranea_pinos_lavanda.png"
+              alt="Casa mediterránea entre pinos y lavanda · Vivienda Passivhaus industrializada de madera técnica"
+              className="w-full h-[380px] sm:h-[480px] lg:h-[580px] object-cover object-center group-hover:scale-102 transition-transform duration-700"
+              loading="eager"
+            />
             
-            {/* Left Column: Narrative, Actions, Metrics */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+            {/* Scrim and Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
+
+            {/* Bottom Floating Bar */}
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 flex flex-col md:flex-row md:items-end justify-between gap-6 text-white">
               
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0DA836]/10 border border-[#0DA836]/20 text-xs font-bold uppercase tracking-wider text-[#0DA836] shadow-2xs">
-                <TreePine className="w-3.5 h-3.5" />
-                <span>CATÁLOGO RESIDENCIAL INDUSTRIALIZADO</span>
+              {/* Bottom Left: Proven Performance Statement */}
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-4 sm:gap-6 max-w-2xl">
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white shrink-0 sm:max-w-[240px] leading-snug">
+                  Rendimiento probado en cada metro cuadrado
+                </h3>
+                <p className="text-xs sm:text-sm text-white/80 leading-relaxed border-l-0 sm:border-l sm:border-white/25 sm:pl-4">
+                  Más de 20 años de ingeniería en madera técnica mecanizada y modelado Passivhaus garantizan máxima eficiencia térmica, bioconfort y retorno contrastado de la inversión.
+                </p>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#16181B] leading-[1.06] text-balance">
-                Tu casa Passivhaus.<br />
-                <span className="text-[#16181B]">Clara desde el inicio.</span>
-              </h1>
-
-              <p className="text-lg sm:text-xl text-[#5A606A] leading-relaxed max-w-2xl font-normal">
-                Viviendas de madera técnica, eficientes y saludables. Elige un modelo Medgón, adáptalo a tu forma de vivir y construye con más control sobre el proceso, el confort y el futuro.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-1">
-                <button
-                  type="button"
-                  onClick={() => onNavigate('catalog')}
-                  className="px-7 py-3.5 text-sm sm:text-base font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95 flex items-center gap-2"
-                >
-                  <span>Ver modelos</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => onNavigate('contact')}
-                  className="px-7 py-3.5 text-sm sm:text-base font-bold text-[#16181B] bg-white hover:bg-[#FAF8F5] border border-[#16181B]/20 hover:border-[#16181B] rounded-xl transition-all cursor-pointer shadow-xs active:scale-95"
-                >
-                  Tengo una parcela
-                </button>
-              </div>
-
-              {/* Trust & Craftsmanship Proof */}
-              <div className="flex items-center gap-3 pt-1">
-                <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-[#16181B] text-white flex items-center justify-center text-[10px] font-bold border-2 border-[#FAF8F5]">
-                    MG
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-[#0DA836] text-white flex items-center justify-center text-[10px] font-bold border-2 border-[#FAF8F5]">
-                    PH
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-[#E4C59E] text-[#16181B] flex items-center justify-center text-[10px] font-bold border-2 border-[#FAF8F5]">
-                    CNC
-                  </div>
-                </div>
-                <span className="text-xs sm:text-sm font-semibold text-[#5A606A]">
-                  Más de 20 años de ingeniería en madera técnica mecanizada en Palencia
-                </span>
-              </div>
-
-              {/* 4 Metric Cards Strip (Clean light cards) */}
-              <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-left">
-                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
-                  <div className="text-xl sm:text-2xl font-black text-[#16181B] tabular-nums">
-                    9 Modelos
-                  </div>
-                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
-                    Catálogo cerrado de 50 a 165 m²
-                  </div>
-                </div>
-
-                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
-                  <div className="text-xl sm:text-2xl font-black text-[#16181B]">
-                    Madera Técnica
-                  </div>
-                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
-                    Precisión industrial y bioconfort
-                  </div>
-                </div>
-
-                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
-                  <div className="text-xl sm:text-2xl font-black text-[#0DA836] tabular-nums">
-                    Hasta -85%
-                  </div>
-                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
-                    Menor demanda térmica estimada*
-                  </div>
-                </div>
-
-                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
-                  <div className="text-xl sm:text-2xl font-black text-[#16181B] tabular-nums">
-                    ~6 Meses
-                  </div>
-                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
-                    Montaje rápido en parcela
-                  </div>
-                </div>
-              </div>
+              {/* Bottom Right: Scroll Now / Explorar Catálogo Pill */}
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('catalogo-2026');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else onNavigate('catalog');
+                }}
+                className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/30 bg-black/40 backdrop-blur-md text-white text-xs font-semibold hover:bg-white hover:text-[#16181B] transition-all cursor-pointer shrink-0 self-start md:self-auto shadow-sm"
+              >
+                <Mouse className="w-3.5 h-3.5" />
+                <span>Explorar modelos ↓</span>
+              </button>
 
             </div>
+          </div>
 
-            {/* Right Column: Hero Visual with Floating Informational Cards */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#16181B]/10 bg-white">
-                <div className="relative h-[440px] sm:h-[540px] lg:h-[600px] overflow-hidden group">
-                  <img
-                    src="/MG128/boho_autumn_exterior.jpg"
-                    alt="Vivienda unifamiliar Passivhaus industrializada con estructura de madera técnica integrada en parcela natural"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
-
-                  {/* Floating Badges inspired by image.png */}
-                  <div className="absolute top-4 right-4 max-w-[220px] bg-white/95 backdrop-blur-md rounded-xl p-3 border border-white/40 shadow-lg text-left animate-in fade-in duration-500">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="w-6 h-6 rounded-lg bg-[#0DA836]/15 flex items-center justify-center text-[#0DA836] shrink-0">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                      </div>
-                      <span className="text-[11px] font-bold text-[#16181B] leading-tight">
-                        Envolvente Passivhaus
-                      </span>
-                    </div>
-                    <p className="text-[10px] text-[#5A606A] leading-tight">
-                      Aislamiento continuo y hermeticidad testada Blower Door n50 ≤ 0.6 ren/h.
-                    </p>
-                  </div>
-
-                  <div className="absolute top-28 right-4 hidden sm:block max-w-[220px] bg-white/95 backdrop-blur-md rounded-xl p-3 border border-white/40 shadow-lg text-left">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="w-6 h-6 rounded-lg bg-[#E4C59E]/40 flex items-center justify-center text-[#16181B] shrink-0">
-                        <Layers className="w-3.5 h-3.5" />
-                      </div>
-                      <span className="text-[11px] font-bold text-[#16181B] leading-tight">
-                        Madera Técnica PEFC
-                      </span>
-                    </div>
-                    <p className="text-[10px] text-[#5A606A] leading-tight">
-                      Mecanizado robotizado milimétrico en taller CNC climatizado.
-                    </p>
-                  </div>
-
-                  <div className="absolute top-52 right-4 hidden sm:block max-w-[220px] bg-white/95 backdrop-blur-md rounded-xl p-3 border border-white/40 shadow-lg text-left">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="w-6 h-6 rounded-lg bg-[#0DA836]/15 flex items-center justify-center text-[#0DA836] shrink-0">
-                        <Wind className="w-3.5 h-3.5" />
-                      </div>
-                      <span className="text-[11px] font-bold text-[#16181B] leading-tight">
-                        Bioconfort & Aire Limpio
-                      </span>
-                    </div>
-                    <p className="text-[10px] text-[#5A606A] leading-tight">
-                      Ventilación continua VMC con recuperación de calor superior al 90%.
-                    </p>
-                  </div>
-
-                  {/* Bottom Model Reference Banner */}
-                  <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-gradient-to-t from-black/85 via-black/50 to-transparent">
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#78E639] block">
-                        Modelo de Referencia
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-bold tracking-tight">
-                        MG 128 Equilibrio · 128 m² útiles
-                      </h3>
-                      <p className="text-xs text-white/80 line-clamp-1 mt-0.5">
-                        Tres dormitorios, dos baños completos y máxima estabilidad térmica.
-                      </p>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => onNavigate('model-detail', 'mg-128')}
-                      className="px-3.5 py-1.5 text-xs font-bold bg-white text-[#16181B] hover:bg-[#78E639] rounded-lg transition-colors cursor-pointer shrink-0"
-                    >
-                      Ver modelo &rarr;
-                    </button>
-                  </div>
-
-                </div>
+          {/* 4 Metric Highlights Strip debajo de la foto */}
+          <div className="mt-8 pt-6 border-t border-[#16181B]/10 grid grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+            <div className="bg-white border border-[#16181B]/10 rounded-xl p-4 shadow-xs">
+              <div className="text-2xl font-black text-[#16181B] tabular-nums">
+                9 Modelos
+              </div>
+              <div className="text-xs text-[#5A606A] mt-0.5">
+                Catálogo cerrado de 50 a 165 m²
               </div>
             </div>
 
+            <div className="bg-white border border-[#16181B]/10 rounded-xl p-4 shadow-xs">
+              <div className="text-2xl font-black text-[#16181B]">
+                Madera Técnica
+              </div>
+              <div className="text-xs text-[#5A606A] mt-0.5">
+                Precisión industrial y bioconfort
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#16181B]/10 rounded-xl p-4 shadow-xs">
+              <div className="text-2xl font-black text-[#0DA836] tabular-nums">
+                Hasta -85%
+              </div>
+              <div className="text-xs text-[#5A606A] mt-0.5">
+                Menor demanda térmica estimada*
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#16181B]/10 rounded-xl p-4 shadow-xs">
+              <div className="text-2xl font-black text-[#16181B] tabular-nums">
+                ~6 Meses
+              </div>
+              <div className="text-xs text-[#5A606A] mt-0.5">
+                Montaje rápido en parcela
+              </div>
+            </div>
           </div>
 
         </div>
@@ -339,7 +277,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
       </section>
 
       {/* 3. CATÁLOGO RESIDENCIAL 2026 */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="catalogo-2026" className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10 space-y-2">
           <div className="text-xs font-bold uppercase tracking-widest text-[#0DA836]">
             CATÁLOGO RESIDENCIAL 2026
@@ -576,7 +514,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
               <span className="text-2xl font-black text-[#16181B] block">03</span>
               <h3 className="text-sm font-bold text-[#16181B]">Definimos adaptaciones y alcance</h3>
               <p className="text-xs text-[#5A606A] leading-relaxed">
-                Ajustamos la tabiquería interior y elegimos la modalidad de contratación SIEM que necesitas.
+                Ajustamos la tabiquería interior y elegimos la modalidad de contratación que necesitas.
               </p>
             </div>
 
@@ -612,14 +550,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
         </div>
       </section>
 
-      {/* 7. SOLUCIÓN INTEGRAL DE ENVOLVENTE MEDGÓN (SIEM) */}
+      {/* 7. SOLUCIÓN INTEGRAL DE ENVOLVENTE MEDGÓN  */}
       <section className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="max-w-2xl space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-[#0DA836]">
             SOLUCIÓN INTEGRAL DE ENVOLVENTE MEDGÓN
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#16181B]">
-            Modalidades de contratación SIEM.
+            Modalidades de contratación .
           </h2>
           <p className="text-base text-[#5A606A] leading-relaxed">
             Estructuramos nuestro sistema de industrialización en madera técnica en cuatro alcances definidos para adaptarnos a tu caso particular.
