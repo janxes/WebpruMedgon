@@ -13,7 +13,8 @@ import {
   Building2, 
   Send,
   CheckCircle2,
-  ZoomIn
+  ZoomIn,
+  ExternalLink
 } from 'lucide-react';
 
 interface ModelDetailViewProps {
@@ -31,24 +32,11 @@ export const ModelDetailView: React.FC<ModelDetailViewProps> = ({
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<'gallery' | 'floorplan'>('gallery');
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    parcela: 'si_en_propiedad',
-    comentarios: '',
-  });
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsFormSubmitted(true);
-  };
 
   return (
     <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
       
-      {/* Schema.org SingleFamilyResidence and Product for AI SEO */}
+      {/* Schema.org SingleFamilyResidence and Product */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -172,10 +160,10 @@ export const ModelDetailView: React.FC<ModelDetailViewProps> = ({
           </div>
 
           <a
-            href="#formulario-dossier"
-            className="block text-center w-full py-2.5 px-4 text-xs font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded transition-colors"
+            href="#solicitar-informacion"
+            className="block text-center w-full py-2.5 px-4 text-xs font-bold text-white bg-[#16181B] hover:bg-[#0DA836] rounded transition-colors cursor-pointer"
           >
-            Solicitar Dossier & Planos &darr;
+            Solicitar más información del modelo &darr;
           </a>
         </div>
       </div>
@@ -370,124 +358,60 @@ export const ModelDetailView: React.FC<ModelDetailViewProps> = ({
         </div>
       </section>
 
-      {/* Lead Capture / Dossier Request Form */}
-      <section id="formulario-dossier" className="bg-[#FAF8F5] border border-[#16181B]/10 rounded-xl p-8 sm:p-12">
-        <div className="max-w-xl mx-auto space-y-6">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0DA836]">
-              Solicitud Directa
+      {/* Sección: Solicitar más información del modelo con Formulario Oficial */}
+      <section id="solicitar-informacion" className="bg-[#FAF8F5] border border-[#16181B]/10 rounded-2xl p-6 sm:p-10 lg:p-12 space-y-8">
+        <div className="max-w-3xl mx-auto text-center space-y-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#0DA836]">
+            Atención Personalizada
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#16181B] tracking-tight">
+            Solicitar más información del modelo {model.code}
+          </h2>
+          <p className="text-sm sm:text-base text-[#5A606A] leading-relaxed">
+            ¿Quieres saber si el modelo <strong>{model.name}</strong> ({model.m2Construidos} m²) encaja en tu parcela, conocer los costes exactos de tu zona o consultar opciones de personalización? Rellena el siguiente formulario oficial y nuestra oficina técnica de Carrión de los Condes (Palencia) te orientará de forma personalizada y sin compromiso.
+          </p>
+        </div>
+
+        {/* Contenedor del Formulario Oficial Integrado */}
+        <div className="max-w-4xl mx-auto bg-white rounded-xl border border-[#16181B]/15 overflow-hidden shadow-xs">
+          <div className="p-3.5 bg-[#16181B] text-white flex flex-wrap items-center justify-between gap-3 text-xs px-5">
+            <span className="font-semibold text-white/90">
+              Formulario Oficial de Consulta Técnica · Medgón Passivhaus
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#16181B]">
-              Solicitar Dossier Comercial {model.code}
-            </h2>
-            <p className="text-sm text-[#5A606A]">
-              Recibe la memoria de calidades, desglose de partidas y plano acotado de {model.name}.
-            </p>
+            <a
+              href="https://docs.google.com/forms/d/1K81cA16qp76ZQL_nTo17DmTT5CD_gj8Jruep2FHTYfU/viewform?edit_requested=true#start=embed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[#78E639] hover:underline font-bold"
+            >
+              <span>Abrir en ventana completa</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
 
-          {isFormSubmitted ? (
-            <div className="p-8 bg-white border border-[#0DA836] rounded-lg text-center space-y-3 animate-in fade-in">
-              <CheckCircle2 className="w-12 h-12 text-[#0DA836] mx-auto" />
-              <h3 className="text-lg font-bold text-[#16181B]">
-                ¡Dossier solicitado con éxito!
-              </h3>
-              <p className="text-sm text-[#5A606A]">
-                Hemos registrado tu solicitud para el modelo <strong>{model.name}</strong>. En breve nuestro equipo técnico de Carrión de los Condes te contactará con la documentación completa.
-              </p>
-              <button
-                type="button"
-                onClick={() => setIsFormSubmitted(false)}
-                className="text-xs font-bold text-[#0DA836] hover:underline pt-2 cursor-pointer"
-              >
-                Enviar otra consulta
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleFormSubmit} className="bg-white p-6 sm:p-8 rounded-lg border border-[#16181B]/10 shadow-xs space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-[#16181B] uppercase mb-1">
-                  Nombre y Apellidos *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.nombre}
-                  onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                  placeholder="Ej. Laura González"
-                  className="w-full px-3.5 py-2.5 text-sm border border-[#16181B]/20 rounded focus:outline-none focus:border-[#16181B]"
-                />
-              </div>
+          <div className="w-full bg-[#FAF8F5]/30 p-2 sm:p-4">
+            <iframe
+              src="https://docs.google.com/forms/d/1K81cA16qp76ZQL_nTo17DmTT5CD_gj8Jruep2FHTYfU/viewform?embedded=true"
+              width="100%"
+              height="880"
+              frameBorder="0"
+              marginHeight={0}
+              marginWidth={0}
+              title={`Solicitar más información del modelo ${model.code}`}
+              className="w-full min-h-[750px] border-none rounded bg-white"
+            >
+              Cargando formulario oficial de Medgón...
+            </iframe>
+          </div>
+        </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-[#16181B] uppercase mb-1">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="laura@ejemplo.com"
-                    className="w-full px-3.5 py-2.5 text-sm border border-[#16181B]/20 rounded focus:outline-none focus:border-[#16181B]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-[#16181B] uppercase mb-1">
-                    Teléfono *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={formData.telefono}
-                    onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
-                    placeholder="612 345 678"
-                    className="w-full px-3.5 py-2.5 text-sm border border-[#16181B]/20 rounded focus:outline-none focus:border-[#16181B]"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-[#16181B] uppercase mb-1">
-                  ¿Dispones ya de parcela? *
-                </label>
-                <select
-                  value={formData.parcela}
-                  onChange={(e) => setFormData({ ...formData, parcela: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-sm border border-[#16181B]/20 rounded bg-white focus:outline-none focus:border-[#16181B]"
-                >
-                  <option value="si_en_propiedad">Sí, dispongo de parcela en propiedad</option>
-                  <option value="en_proceso_compra">En proceso de compra o arras</option>
-                  <option value="buscando_terreno">Buscando terreno activamente</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-[#16181B] uppercase mb-1">
-                  Comentarios o dudas sobre tu proyecto
-                </label>
-                <textarea
-                  rows={3}
-                  value={formData.comentarios}
-                  onChange={(e) => setFormData({ ...formData, comentarios: e.target.value })}
-                  placeholder="Provincia de la parcela, fecha estimada de inicio..."
-                  className="w-full px-3.5 py-2.5 text-sm border border-[#16181B]/20 rounded focus:outline-none focus:border-[#16181B]"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3 px-6 text-sm font-bold text-white bg-[#F35843] hover:bg-[#ff6955] rounded transition-colors cursor-pointer flex items-center justify-center gap-2"
-              >
-                <Send className="w-4 h-4" />
-                <span>Recibir Dossier Comercial y Planos &rarr;</span>
-              </button>
-
-              <p className="text-[11px] text-[#8E95A2] text-center pt-1">
-                Tus datos se tratarán exclusivamente para remitirte la información técnica solicitada.
-              </p>
-            </form>
-          )}
+        <div className="text-center pt-2 space-y-1">
+          <p className="text-xs text-[#5A606A]">
+            ¿Prefieres hablar directamente con un técnico? Llámanos al <a href="tel:979881010" className="text-[#16181B] font-bold hover:underline">979 88 10 10</a> o escríbenos a <a href="mailto:informacion@medgon.com" className="text-[#0DA836] font-bold hover:underline">informacion@medgon.com</a>.
+          </p>
+          <p className="text-[11px] text-[#8E95A2]">
+            Carrión de los Condes (Palencia) · Atención técnica de lunes a viernes
+          </p>
         </div>
       </section>
 

@@ -83,100 +83,189 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onOpenExportModa
   return (
     <div className="space-y-20 sm:space-y-28 pb-16">
       
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-6 sm:pt-10">
+      {/* 1. HERO SECTION (Estilo claro, biofílico y equilibrado inspirado en la estética global) */}
+      <section className="relative pt-4 sm:pt-8">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="max-w-4xl space-y-6">
-            <div className="text-xs font-bold uppercase tracking-widest text-[#0DA836]">
-              CATÁLOGO RESIDENCIAL INDUSTRIALIZADO
-            </div>
-
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter text-[#16181B] leading-[1.05] text-balance">
-              Tu casa Passivhaus.<br />
-              Clara desde el inicio.
-            </h1>
-
-            <p className="text-lg sm:text-xl text-[#5A606A] leading-relaxed max-w-2xl">
-              Viviendas de madera técnica, eficientes y saludables. Elige un modelo Medgón, adáptalo a tu forma de vivir y construye con más control sobre el proceso, el confort y el futuro.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={() => onNavigate('catalog')}
-                className="px-6 py-3.5 text-sm sm:text-base font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded transition-all cursor-pointer shadow-xs active:scale-95 flex items-center gap-2"
-              >
-                <span>Ver modelos</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('contact')}
-                className="px-6 py-3.5 text-sm sm:text-base font-bold text-[#16181B] bg-white hover:bg-[#FAF8F5] border border-[#16181B]/20 hover:border-[#16181B] rounded transition-all cursor-pointer shadow-xs"
-              >
-                Tengo una parcela
-              </button>
-            </div>
-          </div>
-
-          {/* 3 Metric Highlights Strip */}
-          <div className="mt-12 pt-8 border-t border-[#16181B]/10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-            <div>
-              <div className="text-2xl sm:text-3xl font-black text-[#16181B] tabular-nums">
-                9 Modelos
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column: Narrative, Actions, Metrics */}
+            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+              
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0DA836]/10 border border-[#0DA836]/20 text-xs font-bold uppercase tracking-wider text-[#0DA836] shadow-2xs">
+                <TreePine className="w-3.5 h-3.5" />
+                <span>CATÁLOGO RESIDENCIAL INDUSTRIALIZADO</span>
               </div>
-              <div className="text-xs sm:text-sm text-[#5A606A] mt-0.5">
-                Catálogo cerrado de 50 a 165 m²
-              </div>
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-black text-[#16181B]">
-                Madera Técnica
-              </div>
-              <div className="text-xs sm:text-sm text-[#5A606A] mt-0.5">
-                Precisión industrial y bioconfort
-              </div>
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-black text-[#0DA836] tabular-nums">
-                Hasta -85%
-              </div>
-              <div className="text-xs sm:text-sm text-[#5A606A] mt-0.5">
-                Menor demanda térmica estimada*
-              </div>
-            </div>
-          </div>
 
-          {/* Marquee Visual Hero Carrier */}
-          <div className="mt-10 rounded-lg overflow-hidden border border-[#16181B]/10 relative group">
-            <img
-              src="/MG128/boho_autumn_exterior.jpg"
-              alt="Vivienda unifamiliar Passivhaus industrializada con estructura de madera técnica integrada en parcela natural"
-              className="w-full h-[360px] sm:h-[500px] lg:h-[580px] object-cover"
-              loading="eager"
-            />
-            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6 sm:p-10 text-white flex flex-col sm:flex-row justify-between sm:items-end gap-4">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#78E639]">
-                  Modelo de Referencia
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#16181B] leading-[1.06] text-balance">
+                Tu casa Passivhaus.<br />
+                <span className="text-[#16181B]">Clara desde el inicio.</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-[#5A606A] leading-relaxed max-w-2xl font-normal">
+                Viviendas de madera técnica, eficientes y saludables. Elige un modelo Medgón, adáptalo a tu forma de vivir y construye con más control sobre el proceso, el confort y el futuro.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('catalog')}
+                  className="px-7 py-3.5 text-sm sm:text-base font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95 flex items-center gap-2"
+                >
+                  <span>Ver modelos</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onNavigate('contact')}
+                  className="px-7 py-3.5 text-sm sm:text-base font-bold text-[#16181B] bg-white hover:bg-[#FAF8F5] border border-[#16181B]/20 hover:border-[#16181B] rounded-xl transition-all cursor-pointer shadow-xs active:scale-95"
+                >
+                  Tengo una parcela
+                </button>
+              </div>
+
+              {/* Trust & Craftsmanship Proof */}
+              <div className="flex items-center gap-3 pt-1">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-[#16181B] text-white flex items-center justify-center text-[10px] font-bold border-2 border-[#FAF8F5]">
+                    MG
+                  </div>
+                  <div className="w-8 h-8 rounded-full bg-[#0DA836] text-white flex items-center justify-center text-[10px] font-bold border-2 border-[#FAF8F5]">
+                    PH
+                  </div>
+                  <div className="w-8 h-8 rounded-full bg-[#E4C59E] text-[#16181B] flex items-center justify-center text-[10px] font-bold border-2 border-[#FAF8F5]">
+                    CNC
+                  </div>
+                </div>
+                <span className="text-xs sm:text-sm font-semibold text-[#5A606A]">
+                  Más de 20 años de ingeniería en madera técnica mecanizada en Palencia
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                  MG 128 Equilibrio
-                </h3>
-                <p className="text-xs sm:text-sm text-white/80 max-w-lg mt-1">
-                  128 m² útiles · Tres dormitorios, dos baños completos y máxima estabilidad térmica anual.
-                </p>
               </div>
-              <button
-                type="button"
-                onClick={() => onNavigate('model-detail', 'mg-128')}
-                className="px-4 py-2 text-xs sm:text-sm font-bold bg-white text-[#16181B] hover:bg-[#E4C59E] rounded transition-colors self-start sm:self-auto cursor-pointer"
-              >
-                Ver modelo MG 128 &rarr;
-              </button>
+
+              {/* 4 Metric Cards Strip (Clean light cards) */}
+              <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-left">
+                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
+                  <div className="text-xl sm:text-2xl font-black text-[#16181B] tabular-nums">
+                    9 Modelos
+                  </div>
+                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
+                    Catálogo cerrado de 50 a 165 m²
+                  </div>
+                </div>
+
+                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
+                  <div className="text-xl sm:text-2xl font-black text-[#16181B]">
+                    Madera Técnica
+                  </div>
+                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
+                    Precisión industrial y bioconfort
+                  </div>
+                </div>
+
+                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
+                  <div className="text-xl sm:text-2xl font-black text-[#0DA836] tabular-nums">
+                    Hasta -85%
+                  </div>
+                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
+                    Menor demanda térmica estimada*
+                  </div>
+                </div>
+
+                <div className="bg-white border border-[#16181B]/10 rounded-xl p-3.5 sm:p-4 shadow-xs">
+                  <div className="text-xl sm:text-2xl font-black text-[#16181B] tabular-nums">
+                    ~6 Meses
+                  </div>
+                  <div className="text-xs text-[#5A606A] mt-0.5 leading-snug">
+                    Montaje rápido en parcela
+                  </div>
+                </div>
+              </div>
+
             </div>
+
+            {/* Right Column: Hero Visual with Floating Informational Cards */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#16181B]/10 bg-white">
+                <div className="relative h-[440px] sm:h-[540px] lg:h-[600px] overflow-hidden group">
+                  <img
+                    src="/MG128/boho_autumn_exterior.jpg"
+                    alt="Vivienda unifamiliar Passivhaus industrializada con estructura de madera técnica integrada en parcela natural"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
+
+                  {/* Floating Badges inspired by image.png */}
+                  <div className="absolute top-4 right-4 max-w-[220px] bg-white/95 backdrop-blur-md rounded-xl p-3 border border-white/40 shadow-lg text-left animate-in fade-in duration-500">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-6 h-6 rounded-lg bg-[#0DA836]/15 flex items-center justify-center text-[#0DA836] shrink-0">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-[11px] font-bold text-[#16181B] leading-tight">
+                        Envolvente Passivhaus
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-[#5A606A] leading-tight">
+                      Aislamiento continuo y hermeticidad testada Blower Door n50 ≤ 0.6 ren/h.
+                    </p>
+                  </div>
+
+                  <div className="absolute top-28 right-4 hidden sm:block max-w-[220px] bg-white/95 backdrop-blur-md rounded-xl p-3 border border-white/40 shadow-lg text-left">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-6 h-6 rounded-lg bg-[#E4C59E]/40 flex items-center justify-center text-[#16181B] shrink-0">
+                        <Layers className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-[11px] font-bold text-[#16181B] leading-tight">
+                        Madera Técnica PEFC
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-[#5A606A] leading-tight">
+                      Mecanizado robotizado milimétrico en taller CNC climatizado.
+                    </p>
+                  </div>
+
+                  <div className="absolute top-52 right-4 hidden sm:block max-w-[220px] bg-white/95 backdrop-blur-md rounded-xl p-3 border border-white/40 shadow-lg text-left">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-6 h-6 rounded-lg bg-[#0DA836]/15 flex items-center justify-center text-[#0DA836] shrink-0">
+                        <Wind className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-[11px] font-bold text-[#16181B] leading-tight">
+                        Bioconfort & Aire Limpio
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-[#5A606A] leading-tight">
+                      Ventilación continua VMC con recuperación de calor superior al 90%.
+                    </p>
+                  </div>
+
+                  {/* Bottom Model Reference Banner */}
+                  <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-gradient-to-t from-black/85 via-black/50 to-transparent">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#78E639] block">
+                        Modelo de Referencia
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-bold tracking-tight">
+                        MG 128 Equilibrio · 128 m² útiles
+                      </h3>
+                      <p className="text-xs text-white/80 line-clamp-1 mt-0.5">
+                        Tres dormitorios, dos baños completos y máxima estabilidad térmica.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => onNavigate('model-detail', 'mg-128')}
+                      className="px-3.5 py-1.5 text-xs font-bold bg-white text-[#16181B] hover:bg-[#78E639] rounded-lg transition-colors cursor-pointer shrink-0"
+                    >
+                      Ver modelo &rarr;
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
           </div>
 
         </div>

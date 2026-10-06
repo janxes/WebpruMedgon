@@ -431,9 +431,9 @@ ${modelsDropdownHtml}
       </ul>
     </nav>
 
-    <!-- Botón CTA de Solicitud de Dossier / Asesoría -->
+    <!-- Botón CTA de Solicitud de Información / Asesoría -->
     <div style="display: flex; align-items: center; gap: 1rem;">
-      <a href="/contacto/" class="mg-btn-cta">Solicitar Dossier</a>
+      <a href="/contacto/" class="mg-btn-cta">Hablemos de tu proyecto</a>
       <button class="mg-burger-btn" id="medgon-burger-btn" aria-label="Abrir menú de navegación" onclick="medgonOpenDrawer()">
         <span class="mg-burger-line"></span>
         <span class="mg-burger-line"></span>
@@ -904,10 +904,10 @@ ${featuredModelsCards}
         ¿Tienes parcela o proyecto en mente?
       </h2>
       <p style="font-size: 1.1rem; color: #CBD5E0; line-height: 1.6; margin-bottom: 2.5rem;">
-        Solicita el dossier comercial detallado con planos y agenda una visita a nuestras instalaciones robotizadas en Carrión de los Condes (Palencia).
+        Solicita más información del modelo y agenda una visita a nuestras instalaciones robotizadas en Carrión de los Condes (Palencia).
       </p>
-      <a href="/contacto/" class="mg-btn-cta" style="background-color: var(--mg-terracotta); border-color: var(--mg-terracotta); padding: 1.1rem 2.5rem; font-size: 1rem;">
-        Solicitar Dossier & Cita Técnica &rarr;
+      <a href="https://docs.google.com/forms/d/1K81cA16qp76ZQL_nTo17DmTT5CD_gj8Jruep2FHTYfU/viewform?edit_requested=true#start=embed" target="_blank" rel="noopener noreferrer" class="mg-btn-cta" style="background-color: var(--mg-terracotta); border-color: var(--mg-terracotta); padding: 1.1rem 2.5rem; font-size: 1rem;">
+        Solicitar más información del modelo &rarr;
       </a>
     </div>
   </section>
@@ -1086,7 +1086,7 @@ ${galleryItemsHtml}
               ? `<a href="${model.pdfPath}" download target="_blank" class="mg-btn-cta" style="background-color: var(--mg-text-main); border-color: var(--mg-text-main);">
               Descargar Plano Comercial PDF Oficial &darr;
             </a>`
-              : `<a href="#formulario-dossier" class="mg-btn-cta">Solicitar Plano y Mediciones PDF</a>`
+              : `<a href="#solicitar-informacion" class="mg-btn-cta">Solicitar más información</a>`
           }
         </div>
         <div style="background-color: #fff; padding: 1.5rem; border: 1px solid var(--mg-border-hairline); border-radius: 4px; text-align: center;">
@@ -1136,53 +1136,34 @@ ${fixedListHtml}
     </div>
   </section>
 
-  <!-- FORMULARIO DE SOLICITUD DE DOSSIER TÉCNICO Y PLANOS -->
-  <section id="formulario-dossier" style="padding: 4.5rem 0; background-color: var(--mg-bg-mineral); border-top: 1px solid var(--mg-border-hairline);">
-    <div class="mg-container" style="max-width: 680px;">
+  <!-- FORMULARIO DE SOLICITUD DE MÁS INFORMACIÓN DEL MODELO -->
+  <section id="solicitar-informacion" style="padding: 4.5rem 0; background-color: var(--mg-bg-mineral); border-top: 1px solid var(--mg-border-hairline);">
+    <div class="mg-container" style="max-width: 760px;">
       <div style="text-align: center; margin-bottom: 2.5rem;">
-        <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mg-green-primary);">Descarga Inmediata</span>
+        <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mg-green-primary);">Atención Técnica</span>
         <h2 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 0.25rem; margin-bottom: 0.75rem;">
-          Solicitar Dossier Completo ${model.code}
+          Solicitar más información del modelo ${model.code}
         </h2>
         <p style="font-size: 0.95rem; color: var(--mg-text-muted); line-height: 1.5;">
-          Recibe en tu correo la memoria de calidades, desglose de partidas técnicas y plano acotado de ${model.name}.
+          Consulta si el modelo ${model.name} (${model.m2Construidos} m²) se adapta a tu parcela o resuelve cualquier duda con nuestro equipo técnico en Carrión de los Condes.
         </p>
       </div>
 
-      <form action="/api/solicitud-dossier" method="POST" style="background-color: #fff; padding: 2.5rem; border: 1px solid var(--mg-border-hairline); border-radius: 4px; box-shadow: var(--mg-shadow-subtle);">
-        <input type="hidden" name="modelo" value="${model.code}" />
-        <div style="margin-bottom: 1.25rem;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem;" for="nombre">Nombre y Apellidos *</label>
-          <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--mg-border-strong); border-radius: 4px; font-size: 0.95rem;" placeholder="Ej. Carlos Martínez" />
-        </div>
-
-        <div style="margin-bottom: 1.25rem;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem;" for="email">Correo Electrónico *</label>
-          <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--mg-border-strong); border-radius: 4px; font-size: 0.95rem;" placeholder="tunombre@ejemplo.com" />
-        </div>
-
-        <div style="margin-bottom: 1.25rem;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem;" for="telefono">Teléfono *</label>
-          <input type="tel" id="telefono" name="telefono" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--mg-border-strong); border-radius: 4px; font-size: 0.95rem;" placeholder="Ej. 612 345 678" />
-        </div>
-
-        <div style="margin-bottom: 1.5rem;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem;" for="parcela">¿Dispones ya de parcela? *</label>
-          <select id="parcela" name="parcela" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--mg-border-strong); border-radius: 4px; font-size: 0.95rem; background-color: #fff;">
-            <option value="si_en_propiedad">Sí, en propiedad</option>
-            <option value="en_proceso_compra">En proceso de compra</option>
-            <option value="buscando_terreno">Buscando terreno activamente</option>
-          </select>
-        </div>
-
-        <button type="submit" class="mg-btn-cta" style="width: 100%; padding: 0.9rem; font-size: 1rem; background-color: var(--mg-terracotta); border-color: var(--mg-terracotta);">
-          Recibir Dossier Comercial y Planos &rarr;
-        </button>
-
-        <p style="font-size: 0.75rem; color: var(--mg-text-light); margin-top: 1rem; text-align: center; line-height: 1.4;">
-          Tus datos se tratarán exclusivamente para remitirte la información solicitada conforme a nuestra política de privacidad.
-        </p>
-      </form>
+      <div style="background: #ffffff; border-radius: 8px; border: 1px solid var(--mg-border-hairline); overflow: hidden; box-shadow: var(--mg-shadow-subtle);">
+        <iframe
+          src="https://docs.google.com/forms/d/1K81cA16qp76ZQL_nTo17DmTT5CD_gj8Jruep2FHTYfU/viewform?embedded=true"
+          width="100%"
+          height="820"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          style="width: 100%; min-height: 750px; border: none;"
+        >
+          Cargando formulario...
+        </iframe>
+      </div>
+    </div>
+  </section>
     </div>
   </section>
 </div>

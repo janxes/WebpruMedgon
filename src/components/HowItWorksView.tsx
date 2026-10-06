@@ -292,7 +292,7 @@ export const HowItWorksView: React.FC<HowItWorksViewProps> = ({ onNavigate }) =>
             onClick={() => onNavigate('contact')}
             className="px-6 py-3.5 text-sm font-bold text-[#16181B] bg-white hover:bg-[#E4C59E] rounded transition-colors cursor-pointer"
           >
-            Hablar sobre mi vivienda &rarr;
+            Hablemos de tu proyecto &rarr;
           </button>
           <button
             type="button"

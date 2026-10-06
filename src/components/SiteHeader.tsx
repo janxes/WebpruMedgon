@@ -178,14 +178,14 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             </button>
           </nav>
 
-          {/* Zone 3: Primary Action - Hablar sobre mi vivienda */}
+          {/* Zone 3: Primary Action - Hablemos de tu proyecto */}
           <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={() => onNavigate('contact')}
               className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-bold text-white bg-[#16181B] hover:bg-[#F35843] rounded transition-colors cursor-pointer shadow-xs active:scale-95 whitespace-nowrap"
             >
-              <span>Hablar sobre mi vivienda</span>
+              <span>Hablemos de tu proyecto</span>
               <ArrowUpRight className="w-4 h-4 hidden sm:inline" />
             </button>
 
@@ -350,7 +350,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 }}
                 className="w-full py-2.5 text-xs font-bold text-white bg-[#16181B] rounded text-center block"
               >
-                Hablar sobre mi vivienda
+                Hablemos de tu proyecto
               </button>
               <div className="text-[11px] text-[#8E95A2] text-center">
                 Carrión de los Condes (Palencia) · Tel: 979 88 10 10
