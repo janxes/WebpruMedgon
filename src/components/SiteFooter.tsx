@@ -13,10 +13,10 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ onNavigate, onOpenExport
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-14 border-b border-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8 pb-14 border-b border-white/10">
           
           {/* Column 1: Brand & Factory Intro */}
-          <div className="space-y-4">
+          <div className="space-y-4 sm:col-span-2 lg:col-span-1">
             <div className="bg-white/95 rounded px-3 py-1.5 inline-block">
               <img
                 src="/logo-medgon.png"
@@ -29,7 +29,79 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ onNavigate, onOpenExport
             </p>
           </div>
 
-          {/* Column 2: Models List */}
+          {/* Column 2: Productos y Soluciones */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#E4C59E] mb-4">
+              Productos
+            </h4>
+            <ul className="space-y-2 text-sm text-[#CBD5E0]">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('productos-unifamiliares')}
+                  className="hover:text-[#78E639] transition-colors cursor-pointer text-left"
+                >
+                  Unifamiliares Passivhaus
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('productos-terciario')}
+                  className="hover:text-[#78E639] transition-colors cursor-pointer text-left"
+                >
+                  Edificios Terciarios
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('productos-plurifamiliares')}
+                  className="hover:text-[#78E639] transition-colors cursor-pointer text-left"
+                >
+                  Plurifamiliares en Altura
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('productos-derecho-vuelo')}
+                  className="hover:text-[#78E639] transition-colors cursor-pointer text-left"
+                >
+                  Derecho de Vuelo (Altior)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('productos-fachadas')}
+                  className="hover:text-[#78E639] transition-colors cursor-pointer text-left"
+                >
+                  Fachadas Industrializadas
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('productos-cubiertas')}
+                  className="hover:text-[#78E639] transition-colors cursor-pointer text-left"
+                >
+                  Cubiertas de Madera Leica
+                </button>
+              </li>
+              <li className="pt-1">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('productos')}
+                  className="text-xs font-semibold text-[#0DA836] hover:text-[#78E639] transition-colors cursor-pointer"
+                >
+                  Todos los productos &rarr;
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Models List */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#E4C59E] mb-4">
               Modelos
@@ -101,6 +173,16 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ onNavigate, onOpenExport
               <li>
                 <button
                   type="button"
+                  onClick={() => onNavigate('proyectos')}
+                  className="hover:text-white transition-colors cursor-pointer text-[#78E639] font-bold flex items-center gap-1.5"
+                >
+                  <span>Proyectos & Obras</span>
+                  <span className="text-[10px] bg-[#0DA836]/20 px-1.5 py-0.2 rounded text-[#78E639]">24</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
                   onClick={() => onNavigate('how-it-works')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
@@ -159,6 +241,69 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ onNavigate, onOpenExport
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Sobre Medgón
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('nuestro-sistema')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Nuestro Sistema (Kerto Ripa)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('nuestro-proposito')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Nuestro Propósito
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('oficina-tecnica')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Oficina Técnica (BIM & PHPP)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('habitat-medgon')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Hábitat Medgón (Bioconfort)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('rsc')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  RSC y ODS (ISO 14064)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('id-innovacion')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  I+D+i (Proyectos IGES & SOCAI)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('inversion')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Inversión Industrial (Reindus)
                 </button>
               </li>
             </ul>

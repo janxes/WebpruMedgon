@@ -14,17 +14,23 @@ import {
   Layers,
   Sparkles,
   Phone,
-  Mail
+  Mail,
+  ChevronRight
 } from 'lucide-react';
 
 interface SobreMedgonViewProps {
   onNavigate: (view: string, modelId?: string) => void;
 }
 
+import { SobreMedgonSubmenu } from './SobreMedgonSubmenu';
+
 export const SobreMedgonView: React.FC<SobreMedgonViewProps> = ({ onNavigate }) => {
   return (
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-20 sm:space-y-28">
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16 sm:space-y-24">
       
+      {/* 0. SUBMENU SUPERIOR UNIFICADO DE SOBRE MEDGÓN */}
+      <SobreMedgonSubmenu currentView="sobre-medgon" onNavigate={onNavigate} />
+
       {/* 1. HERO EDITORIAL */}
       <section className="space-y-8">
         <div className="max-w-4xl space-y-4">

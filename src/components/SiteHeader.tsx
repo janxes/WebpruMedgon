@@ -14,6 +14,8 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   onOpenExportModal,
 }) => {
   const [isCatalogDropdownOpen, setIsCatalogDropdownOpen] = useState(false);
+  const [isProductosDropdownOpen, setIsProductosDropdownOpen] = useState(false);
+  const [isSobreMedgonDropdownOpen, setIsSobreMedgonDropdownOpen] = useState(false);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
   const modelsList = Object.values(CATALOG_MODELS);
@@ -55,6 +57,178 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             >
               Inicio
             </button>
+
+            {/* Productos Dropdown with Submenu */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsProductosDropdownOpen(true)}
+              onMouseLeave={() => setIsProductosDropdownOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => onNavigate('productos')}
+                className={`inline-flex items-center gap-1 text-sm font-semibold transition-colors cursor-pointer py-1 ${
+                  ['productos', 'productos-unifamiliares', 'productos-terciario', 'productos-plurifamiliares', 'productos-derecho-vuelo', 'productos-fachadas', 'productos-cubiertas'].includes(currentView)
+                    ? 'text-[#16181B] border-b-2 border-[#16181B]'
+                    : 'text-[#5A606A] hover:text-[#16181B]'
+                }`}
+              >
+                <span>Productos</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isProductosDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Submenu Dropdown */}
+              {isProductosDropdownOpen && (
+                <div className="absolute top-full left-0 w-84 bg-white border border-[#16181B]/10 shadow-xl rounded-md py-2 mt-1 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="px-4 py-2 border-b border-[#16181B]/5 flex justify-between items-center text-xs font-bold uppercase tracking-wider text-[#8E95A2]">
+                    <span>Productos y Soluciones</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProductosDropdownOpen(false);
+                        onNavigate('productos');
+                      }}
+                      className="text-[#0DA836] hover:underline cursor-pointer"
+                    >
+                      Ver todos &rarr;
+                    </button>
+                  </div>
+                  <div className="py-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProductosDropdownOpen(false);
+                        onNavigate('productos-unifamiliares');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'productos-unifamiliares' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                        Viviendas unifamiliares y en promoción
+                      </span>
+                      <span className="text-[11px] text-[#5A606A]">
+                        A medida y promociones Passivhaus industrializadas
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProductosDropdownOpen(false);
+                        onNavigate('productos-terciario');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'productos-terciario' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                        Edificios de uso terciario
+                      </span>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Colegios, guarderías, centros sanitarios y oficinas
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProductosDropdownOpen(false);
+                        onNavigate('productos-plurifamiliares');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'productos-plurifamiliares' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                        Edificios plurifamiliares en altura
+                      </span>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Estructura completa de madera y construcción híbrida
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProductosDropdownOpen(false);
+                        onNavigate('productos-derecho-vuelo');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'productos-derecho-vuelo' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          Derecho de vuelo
+                        </span>
+                        <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.2 rounded">
+                          Altior
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Ampliación de más alturas sobre azoteas urbanas
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProductosDropdownOpen(false);
+                        onNavigate('productos-fachadas');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'productos-fachadas' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                        Fachadas industrializadas
+                      </span>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Envolventes herméticas continuas sin puentes térmicos
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProductosDropdownOpen(false);
+                        onNavigate('productos-cubiertas');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'productos-cubiertas' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          Cubiertas de madera
+                        </span>
+                        <span className="text-[10px] font-bold text-[#8E95A2] bg-[#16181B]/5 px-1.5 py-0.2 rounded">
+                          Leica 3D
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Estructuras mecanizadas CNC para obra nueva y reforma
+                      </span>
+                    </button>
+
+                    <div className="pt-1 mt-1 border-t border-[#16181B]/5 px-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsProductosDropdownOpen(false);
+                          onNavigate('catalog');
+                        }}
+                        className="w-full p-2 text-left text-xs font-bold text-[#0DA836] hover:bg-[#FAF8F5] rounded transition-colors flex items-center justify-between cursor-pointer"
+                      >
+                        <span>Casas de catálogo (Modelos cerrados)</span>
+                        <span>&rarr;</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Catalog Dropdown with Submenu */}
             <div
@@ -117,6 +291,19 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
               )}
             </div>
 
+            {/* Proyectos Nav Link */}
+            <button
+              type="button"
+              onClick={() => onNavigate('proyectos')}
+              className={`text-sm font-semibold transition-colors cursor-pointer py-1 ${
+                currentView === 'proyectos' || currentView === 'proyecto-detalle'
+                  ? 'text-[#16181B] border-b-2 border-[#16181B]'
+                  : 'text-[#5A606A] hover:text-[#16181B]'
+              }`}
+            >
+              Proyectos
+            </button>
+
             <button
               type="button"
               onClick={() => onNavigate('how-it-works')}
@@ -157,15 +344,209 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
               Blog
             </button>
 
-            <button
-              type="button"
-              onClick={() => onNavigate('sobre-medgon')}
-              className={`text-sm font-semibold transition-colors cursor-pointer py-1 ${
-                currentView === 'sobre-medgon' ? 'text-[#16181B] border-b-2 border-[#16181B]' : 'text-[#5A606A] hover:text-[#16181B]'
-              }`}
+            {/* Sobre Medgón Dropdown with Submenu */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsSobreMedgonDropdownOpen(true)}
+              onMouseLeave={() => setIsSobreMedgonDropdownOpen(false)}
             >
-              Sobre Medgón
-            </button>
+              <button
+                type="button"
+                onClick={() => onNavigate('sobre-medgon')}
+                className={`inline-flex items-center gap-1 text-sm font-semibold transition-colors cursor-pointer py-1 ${
+                  ['sobre-medgon', 'nuestro-sistema', 'nuestro-proposito', 'oficina-tecnica', 'habitat-medgon', 'rsc', 'id-innovacion', 'inversion'].includes(currentView)
+                    ? 'text-[#16181B] border-b-2 border-[#16181B]'
+                    : 'text-[#5A606A] hover:text-[#16181B]'
+                }`}
+              >
+                <span>Sobre Medgón</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isSobreMedgonDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Submenu Dropdown */}
+              {isSobreMedgonDropdownOpen && (
+                <div className="absolute top-full left-0 w-84 bg-white border border-[#16181B]/10 shadow-xl rounded-md py-2 mt-1 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="px-4 py-2 border-b border-[#16181B]/5 text-xs font-bold uppercase tracking-wider text-[#8E95A2]">
+                    Sobre Medgón
+                  </div>
+                  <div className="py-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('sobre-medgon');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'sobre-medgon' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                        Quiénes Somos & Trayectoria
+                      </span>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Historia desde 2005, planta en Palencia y equipo
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('nuestro-sistema');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'nuestro-sistema' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          Nuestro Sistema
+                        </span>
+                        <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.2 rounded">
+                          Marcado CE
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Entramado ligero & Forjados Kerto Ripa
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('nuestro-proposito');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'nuestro-proposito' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                        Nuestro Propósito
+                      </span>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Misión, visión, valores y sostenibilidad
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('oficina-tecnica');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'oficina-tecnica' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          Oficina Técnica
+                        </span>
+                        <span className="text-[10px] font-bold text-[#8E95A2] bg-[#16181B]/5 px-1.5 py-0.2 rounded">
+                          BIM & PHPP
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Cadwork 3D, Dlubal y soporte a proyectistas
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('habitat-medgon');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'habitat-medgon' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          Hábitat Medgón
+                        </span>
+                        <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.2 rounded">
+                          Bioconfort
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Salud biológica, aire limpio VMC y domótica
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('rsc');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'rsc' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          RSC & ODS
+                        </span>
+                        <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.2 rounded">
+                          ISO 14064
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Plan de Igualdad, Huella de Carbono MITECO y ODS
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('id-innovacion');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'id-innovacion' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          I+D+i Innovación
+                        </span>
+                        <span className="text-[10px] font-bold text-[#8E95A2] bg-[#16181B]/5 px-1.5 py-0.2 rounded">
+                          FEDER / ICE
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Proyectos IGES, SOCAI con IA y robótica CNC
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSobreMedgonDropdownOpen(false);
+                        onNavigate('inversion');
+                      }}
+                      className={`w-full px-4 py-2 flex flex-col text-left text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer group ${
+                        currentView === 'inversion' ? 'bg-[#FAF8F5]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#16181B] group-hover:text-[#0DA836] transition-colors">
+                          Inversión Industrial
+                        </span>
+                        <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.2 rounded">
+                          Reindus
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#5A606A]">
+                        Planta en Carrión de los Condes y Fondos FEDER
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
 
             <button
               type="button"
@@ -245,6 +626,101 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                   Inicio
                 </button>
 
+                {/* Submenú Móvil Productos */}
+                <div className="py-2 border-y border-[#16181B]/5 my-1 space-y-1 bg-[#FAF8F5]/60 rounded-lg p-2.5">
+                  <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#8E95A2] mb-1">
+                    <span>Productos Medgón</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileDrawerOpen(false);
+                        onNavigate('productos');
+                      }}
+                      className="text-[#0DA836] font-bold"
+                    >
+                      Ver todos &rarr;
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('productos-unifamiliares');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors ${
+                      currentView === 'productos-unifamiliares' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    Viviendas unifamiliares
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('productos-terciario');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors ${
+                      currentView === 'productos-terciario' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    Edificios de uso terciario
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('productos-plurifamiliares');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors ${
+                      currentView === 'productos-plurifamiliares' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    Edificios plurifamiliares en altura
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('productos-derecho-vuelo');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors flex items-center justify-between ${
+                      currentView === 'productos-derecho-vuelo' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    <span>Derecho de vuelo</span>
+                    <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.5 rounded">
+                      Altior
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('productos-fachadas');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors ${
+                      currentView === 'productos-fachadas' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    Fachadas industrializadas
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('productos-cubiertas');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors flex items-center justify-between ${
+                      currentView === 'productos-cubiertas' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    <span>Cubiertas de madera</span>
+                    <span className="text-[10px] font-bold text-[#8E95A2] bg-[#16181B]/5 px-1.5 py-0.5 rounded">
+                      Leica 3D
+                    </span>
+                  </button>
+                </div>
+
                 <div>
                   <button
                     type="button"
@@ -269,6 +745,19 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     ))}
                   </div>
                 </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileDrawerOpen(false);
+                    onNavigate('proyectos');
+                  }}
+                  className={`block w-full text-left font-bold text-base py-1 ${
+                    currentView === 'proyectos' || currentView === 'proyecto-detalle' ? 'text-[#0DA836]' : 'text-[#16181B]'
+                  }`}
+                >
+                  Proyectos
+                </button>
 
                 <button
                   type="button"
@@ -316,18 +805,81 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                   Blog
                 </button>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsMobileDrawerOpen(false);
-                    onNavigate('sobre-medgon');
-                  }}
-                  className={`block w-full text-left font-bold text-base py-1 ${
-                    currentView === 'sobre-medgon' ? 'text-[#0DA836]' : 'text-[#16181B]'
-                  }`}
-                >
-                  Sobre Medgón
-                </button>
+                {/* Submenú Móvil Sobre Medgón */}
+                <div className="py-2 border-y border-[#16181B]/5 my-1 space-y-1 bg-[#FAF8F5]/60 rounded-lg p-2.5">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#8E95A2] mb-1">
+                    Sobre Medgón
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('sobre-medgon');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors ${
+                      currentView === 'sobre-medgon' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    Quiénes Somos & Trayectoria
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('nuestro-sistema');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors flex items-center justify-between ${
+                      currentView === 'nuestro-sistema' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    <span>Nuestro Sistema</span>
+                    <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.5 rounded">
+                      Kerto CE
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('nuestro-proposito');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors ${
+                      currentView === 'nuestro-proposito' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    Nuestro Propósito
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('oficina-tecnica');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors flex items-center justify-between ${
+                      currentView === 'oficina-tecnica' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    <span>Oficina Técnica</span>
+                    <span className="text-[10px] font-bold text-[#8E95A2] bg-[#16181B]/5 px-1.5 py-0.5 rounded">
+                      BIM & PHPP
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileDrawerOpen(false);
+                      onNavigate('habitat-medgon');
+                    }}
+                    className={`block w-full text-left font-bold text-sm py-1.5 px-2 rounded transition-colors flex items-center justify-between ${
+                      currentView === 'habitat-medgon' ? 'bg-white text-[#0DA836] shadow-2xs' : 'text-[#16181B] hover:bg-white'
+                    }`}
+                  >
+                    <span>Hábitat Medgón</span>
+                    <span className="text-[10px] font-bold text-[#0DA836] bg-[#0DA836]/10 px-1.5 py-0.5 rounded">
+                      I+D+i
+                    </span>
+                  </button>
+                </div>
 
                 <button
                   type="button"

@@ -3,6 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          if (typeof window !== 'undefined') {
+            var activeFetch = window.fetch;
+            var fetchDesc = {
+              get: function() { return activeFetch; },
+              set: function(fn) { activeFetch = fn; },
+              configurable: true,
+              enumerable: true
+            };
+
+            // 1. Patch Window.prototype (prototype chain for Window instances)
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              try {
+                Object.defineProperty(Window.prototype, 'fetch', fetchDesc);
+              } catch (e1) {}
+            }
+
+            // 2. Patch window.__proto__
+            if (window.__proto__) {
+              try {
+                Object.defineProperty(window.__proto__, 'fetch', fetchDesc);
+              } catch (e2) {}
+            }
+
+            // 3. Patch window own property
+            try {
+              Object.defineProperty(window, 'fetch', fetchDesc);
+            } catch (e3) {}
+          }
+        } catch (e) {}
+      })();
+    </script>
     <title>Medgón Passivhaus | Casas de Madera, Derecho de Vuelo y Fachadas</title>
     <meta 
       name="description" 
